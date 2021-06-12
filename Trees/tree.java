@@ -225,7 +225,7 @@ public class tree
 
         printSingleChildParent(root.left, root);
         printSingleChildParent(root.right, root);
-    }root
+    }
 
     public static Node removeLeaves(Node root)
     {
