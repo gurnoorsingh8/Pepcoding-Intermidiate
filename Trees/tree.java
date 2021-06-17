@@ -280,7 +280,7 @@ public class tree
         ArrayList<Node> list2 = new ArrayList<>();
 
         rootToNodePath(node, p, list1);
-        rootToNodePath(node, p, list2);
+        rootToNodePath(node, q, list2);
 
         int i = list1.size() - 1;
         int j = list2.size() - 1;
