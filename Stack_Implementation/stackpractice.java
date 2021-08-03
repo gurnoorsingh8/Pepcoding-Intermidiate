@@ -78,13 +78,75 @@ public class stackpractice
 
     //Push
 
-    protected void push_()
+    protected void push_(int data)
+    {
+        this.arr[++this.tos] = data;
+        this.elementCount++;
+    }
 
-    public void push()
+    public void push(int data) throws Exception
+    {
+        overflowException();
+        push_(data);
+    }
+
+    public int top() throws Exception
+    {
+        underFlowExeption();
+        return arr[this.tos];
+    }
+
+    public int pop_()
+    {
+        int rv = this.arr[tos];
+        this.arr[this.tos--] = 0;
+        this.elementCount--;
+        return rv;
+    }
+
+    public int pop() throws Exception
+    {
+        underFlowExeption();
+        return pop_();
+    }
+}
 
 
+public class dynamicStackPractice extends stackpractice
+{
+    public dynamicStackPractice()
+    {
+        super();
+    }
 
+    public dynamicStackPractice(int size)
+    {
+        super(size);
+    }
 
+    public dynamicStackPractice(int[] arr)
+    {
+        super.initializeVariables(2 * arr.length);
+        for(int ele : arr)
+        {
+            super.push_(ele);
+        }
+    }
 
+    @Override
+    public void push(int data) throws Exception
+    {
+        if(super.capacity == super.elementCount)
+        {
+            int[] temp = super.arr;
+            super.initializeVariables(2 * super.capacity);
 
+            for(int ele : temp)
+            {
+                super.push_(ele);
+            }
+        }
+
+        super.push(data);
+    }
 }
